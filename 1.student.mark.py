@@ -1,5 +1,8 @@
+import time
+
 students_list = {}
 course_list = {}
+mark_list = {}
 
 def input_no_student():
     num_student = int(input("Enter number of student(s) in a class:"))
@@ -28,6 +31,7 @@ def input_student_info(stu_number):
 
 def inputMarks(course,stu):
     marks = input("Grade the student performance on the course:")
+    mark_list[(course,stu)] = marks
 
 
 def main():
@@ -36,6 +40,12 @@ def main():
 
     for x in range(amount_student):
         input_student_info(x)
+
+    for y in range(amount_course):
+        registerCourses(y)
+
+    time.sleep(1)
+    inputMarks(course_list[0],students_list[0])
 
     
 
