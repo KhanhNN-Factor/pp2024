@@ -52,7 +52,7 @@ def reg_mark():
     student_id = input("Input student's ID: ")
     student = None
     for s in student_list:
-        if s.get_student_id() == student_id:
+        if s._get_student_id() == student_id:
             student = s
             break
     if student is None:
@@ -62,14 +62,14 @@ def reg_mark():
     course_id = input("Input course's ID: ")
     course = None
     for c in course_list:
-        if c.get_course_id() == course_id:
+        if c._get_course_id() == course_id:
             course = c
             break
     if course is None:
         print("Course doesn't exist")
         return
 
-    mark = input(f"Enter marks for {student.get_student_name()} in {course.get_course_name()}: ")
+    mark = input(f"Enter marks for {student._get_student_name()} in {course._get_course_name()}: ")
     marks[(student_id, course_id)] = mark
     
 
@@ -85,13 +85,17 @@ def list_all_courses():
         if isinstance(i,Course):
             print(i._get_course_info())
 
-def main():
-    no_student = input("Enter number of students in a class: ")
-    no_courses = input("Enter number of courses: ")
+def list_all_marks():
+    for i in marks:
+        print(f"{i} : {marks[i]}")
 
-    for x in range(int(no_student)):
+def main():
+    no_student = int(input("Enter number of students in a class: "))
+    no_courses = int(input("Enter number of courses: "))
+
+    for x in range(no_student):
         reg_Student_info()
-    for y in range(int(no_courses)):
+    for y in range(no_courses):
         reg_course_info()
 
     print()
@@ -102,5 +106,7 @@ def main():
     time.sleep(.5)
 
     reg_mark()
+
+    list_all_marks()
     
 main()   
