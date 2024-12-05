@@ -44,9 +44,8 @@ def main():
     for y in range(amount_course):
         registerCourses(y)
 
-    time.sleep(1)
-    inputMarks(course_list[0],students_list[0])
+    # time.sleep(1)
+   # inputMarks(course_list[0],students_list[0])
 
     
-
 main()
