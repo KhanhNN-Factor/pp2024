@@ -1,3 +1,2 @@
-Math.2 | Algebra
-Tech.2 | python
-MATH.001 | Algebra
+MATH.1 | Calculus
+MATH.2 | Algebra

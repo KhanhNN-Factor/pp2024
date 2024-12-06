@@ -3,6 +3,7 @@ course_list = []
 marks = {}
 
 import time
+import os
 
 class Course:
     def __init__(self,id,name):
@@ -40,8 +41,9 @@ def reg_Student_info():
     student_DoB = input("Input student's DoB: ")
     new_student = Student(student_id,student_name,student_DoB)
     student_list.append(new_student)
-    with open("students.txt","a") as student:
-        student.write("{} | {} | {}".format(student_id,student_name,student_DoB)+ "\n")
+    if os.path.exists("students.txt"):
+        with open("students.txt","a") as student:
+            student.write("{} | {} | {}".format(student_id,student_name,student_DoB)+ "\n")
 
 def reg_course_info():
     print("Enter course's info")
@@ -49,8 +51,9 @@ def reg_course_info():
     course_name = input("Input course's name: ")
     new_course = Course(course_id,course_name)
     course_list.append(new_course)
-    with open("courses.txt","a") as course:
-        course.write(f"{course_id} | {course_name}"+ "\n")
+    if os.path.exists("courses.txt"):
+        with open("courses.txt","a") as course:
+            course.write(f"{course_id} | {course_name}"+ "\n")
 
 
 def reg_mark():
@@ -76,8 +79,9 @@ def reg_mark():
 
     mark = input(f"Enter marks for {student._get_student_name()} in {course._get_course_name()}: ")
     marks[(student_id, course_id)] = mark
-    with open("marks.txt","a") as marking:
-        marking.write(f"{student_id} in {course_id} scored: {mark}"+ "\n")
+    if os.path.exists("marks.txt"):
+        with open("marks.txt","a") as marking:
+            marking.write(f"{student_id} in {course_id} scored: {mark}"+ "\n")
     
 
 def list_all_students():
@@ -85,16 +89,31 @@ def list_all_students():
     for i in student_list:
         if isinstance(i,Student):
             print(i._get_student_info())
+    print("In the files:")
+    if os.path.exists("students.txt"):
+        with open("students.txt") as student:
+            for s in student:
+                print(s)
         
 def list_all_courses():
     print("Here are the currently available courses: ")
     for i in course_list:
         if isinstance(i,Course):
             print(i._get_course_info())
+    print("In the file:")
+    if os.path.exists("courses.txt"):
+        with open("courses.txt") as course:
+            for c in course:
+                print(c)
 
 def list_all_marks():
     for i in marks:
         print(f"{i} : {marks[i]}")
+    print("In the file: ")
+    if os.path.exists("marks.txt"):
+        with open("marks.txt") as mark:
+            for m in mark:
+                print(m)
 
 def main():
     no_student = int(input("Enter number of students in a class: "))
