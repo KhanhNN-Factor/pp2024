@@ -40,6 +40,8 @@ def reg_Student_info():
     student_DoB = input("Input student's DoB: ")
     new_student = Student(student_id,student_name,student_DoB)
     student_list.append(new_student)
+    with open("students.txt","a") as student:
+        student.write("{} | {} | {}".format(student_id,student_name,student_DoB)+ "\n")
 
 def reg_course_info():
     print("Enter course's info")
@@ -47,6 +49,9 @@ def reg_course_info():
     course_name = input("Input course's name: ")
     new_course = Course(course_id,course_name)
     course_list.append(new_course)
+    with open("courses.txt","a") as course:
+        course.write(f"{course_id} | {course_name}"+ "\n")
+
 
 def reg_mark():
     student_id = input("Input student's ID: ")
@@ -71,6 +76,8 @@ def reg_mark():
 
     mark = input(f"Enter marks for {student._get_student_name()} in {course._get_course_name()}: ")
     marks[(student_id, course_id)] = mark
+    with open("marks.txt","a") as marking:
+        marking.write(f"{student_id} in {course_id} scored: {mark}"+ "\n")
     
 
 def list_all_students():
