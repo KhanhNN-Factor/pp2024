@@ -1,2 +1,0 @@
-MATH.1 | Calculus
-MATH.2 | Algebra
