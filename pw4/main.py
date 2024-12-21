@@ -31,6 +31,7 @@ def get_Input():
     else:
         print("Illegal move")
 
+    print("\n")
     get_Input()
 
 get_Input()
